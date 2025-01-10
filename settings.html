@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - RD Client</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gradient-to-br from-gray-900 to-blue-900 text-white min-h-screen">
+    <div class="container mx-auto p-4">
+        <header class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold flex items-center">
+                <i class="fas fa-cog mr-3 text-gray-400"></i>
+                Settings
+            </h1>
+            <a href="index.html" class="btn-primary px-4 py-2 rounded-lg flex items-center gap-2">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+        </header>
+
+        <!-- Account Section -->
+        <div class="glass-effect rounded-xl p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-4 flex items-center">
+                <i class="fas fa-user mr-2 text-blue-400"></i>
+                Account Information
+            </h2>
+            <div class="space-y-4" id="account-info">
+                <div class="flex items-center justify-between">
+                    <span class="text-gray-400">Username</span>
+                    <span id="username" class="font-semibold">Loading...</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="text-gray-400">Email</span>
+                    <span id="email" class="font-semibold">Loading...</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="text-gray-400">Account Type</span>
+                    <span id="account-type" class="font-semibold">Loading...</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="text-gray-400">Points</span>
+                    <span id="points" class="font-semibold">Loading...</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="text-gray-400">Premium Days Left</span>
+                    <span id="premium-days" class="font-semibold">Loading...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- API Settings -->
+        <div class="glass-effect rounded-xl p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-4 flex items-center">
+                <i class="fas fa-key mr-2 text-yellow-500"></i>
+                API Settings
+            </h2>
+            <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <span class="text-gray-400">API Key</span>
+                    <div class="flex items-center gap-2">
+                        <input type="password" id="api-key" 
+                            class="custom-input rounded-lg px-4 py-2" 
+                            readonly>
+                        <button id="show-api-key" class="btn-secondary px-3 py-2 rounded-lg">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        <button id="copy-api-key" class="btn-secondary px-3 py-2 rounded-lg">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+                <button id="change-api-key" class="btn-primary px-4 py-2 rounded-lg">
+                    Change API Key
+                </button>
+            </div>
+        </div>
+
+        <!-- Download Settings -->
+        <div class="glass-effect rounded-xl p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-4 flex items-center">
+                <i class="fas fa-download mr-2 text-green-400"></i>
+                Download Settings
+            </h2>
+            <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <span class="text-gray-400">Default Download Directory</span>
+                    <input type="text" id="download-dir" 
+                        class="custom-input rounded-lg px-4 py-2"
+                        placeholder="Default download path">
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="text-gray-400">Auto-start Downloads</span>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" id="auto-start" class="sr-only peer">
+                        <div class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Host Settings -->
+        <div class="glass-effect rounded-xl p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-4 flex items-center">
+                <i class="fas fa-server mr-2 text-purple-400"></i>
+                Host Settings
+            </h2>
+            <div id="hosts-list" class="space-y-4">
+                <!-- Hosts will be populated by JavaScript -->
+                <div class="text-center text-gray-400">
+                    <i class="fas fa-spinner fa-spin mr-2"></i>
+                    Loading hosts...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="fixed bottom-4 right-4 space-y-2 z-50"></div>
+
+    <script src="settings.js"></script>
+</body>
+</html> 

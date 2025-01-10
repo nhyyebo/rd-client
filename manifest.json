@@ -1,0 +1,20 @@
+{
+  "name": "RD Client",
+  "short_name": "RD Client",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#111827",
+  "theme_color": "#1f2937",
+  "icons": [
+    {
+      "src": "appstore.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "appstore.png", 
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+} 

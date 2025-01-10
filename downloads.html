@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloads - RD Client</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gradient-to-br from-gray-900 to-blue-900 text-white min-h-screen">
+    <div class="container mx-auto p-4">
+        <header class="flex justify-between items-center mb-6">
+            <h1 class="text-3xl font-bold flex items-center">
+                <i class="fas fa-download mr-3 text-blue-400"></i>
+                Downloads
+            </h1>
+            <a href="index.html" class="btn-primary px-4 py-2 rounded-lg flex items-center gap-2">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+        </header>
+
+       
+
+        <div class="filters-scroll mb-4">
+            <div class="flex gap-4">
+                <button id="filter-all" class="btn-filter active">All</button>
+                <button id="filter-video" class="btn-filter">Videos</button>
+                <button id="filter-audio" class="btn-filter">Audio</button>
+                <button id="filter-archive" class="btn-filter">Archives</button>
+            </div>
+        </div>
+
+        <div id="downloads-section" class="glass-effect rounded-xl p-6">
+            <div id="downloads-list">
+                <div class="text-center">
+                    <i class="fas fa-spinner fa-spin"></i> Loading downloads...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container" class="fixed bottom-4 right-4 space-y-2 z-50"></div>
+    <script src="downloads.js"></script>
+</body>
+</html> 
