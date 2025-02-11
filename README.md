@@ -14,12 +14,30 @@ RD Client is a web application that allows users to manage their downloads and t
 - **Filter Options**: Filter downloads and torrents by type or status.
 - **Visual Feedback**: Clear indicators for active downloads, completed torrents, and errors.
 
+## Security Notice
+
+**Important**: This application does not store your Real-Debrid API key on any server. Your API key is stored locally in your browser's local storage. You can verify this by checking the following files:
+- [common.js](common.js) - Retrieves the API key from local storage.
+- [downloads.js](downloads.js) - Uses the API key from local storage to fetch downloads.
+- [main.js](main.js) - Manages the API key and application initialization.
+- [settings.js](settings.js) - Manages API key visibility and changes.
+
 ## Technologies Used
 
 - **HTML**: Structure of the web application.
 - **CSS**: Styling and layout using Tailwind CSS for a modern look.
 - **JavaScript**: Client-side scripting for dynamic content and API interactions.
 - **Real-Debrid API**: Integration with the Real-Debrid service for managing downloads and torrents.
+
+## Contributing
+
+We welcome contributions to the RD Client project! To contribute, follow these steps:
+
+1. **Fork the Repository**: Click the "Fork" button at the top right of the repository page to create a copy of the repository in your GitHub account.
+2. **Clone the Repository**: Clone the forked repository to your local machine using the following command:
+   ```sh
+   git clone https://github.com/yourusername/rd-client.git
+   ```
 
 ## Self-Hosting Instructions
 
@@ -70,12 +88,10 @@ To self-host the RD Client application, follow these steps based on your operati
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Acknowledgments
 
 - [Real-Debrid API](https://developer.real-debrid.com/) for providing the API to manage downloads and torrents.
-- [Tailwind CSS](https://tailwindcss.com/) for the beautiful styling framework.
-- [Font Awesome](https://fontawesome.com/) for the icons used in the application.
 
 ---
