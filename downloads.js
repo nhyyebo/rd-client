@@ -64,46 +64,53 @@ function applyFiltersAndSearch() {
 
     renderDownloads(filteredDownloads);
 }
+  // Add this function to handle Infuse playback
+  function getInfuseDeepLink(downloadUrl) {
+      return `infuse://x-callback-url/play?url=${encodeURIComponent(downloadUrl)}`;
+  }
 
-function renderDownloads(downloads) {
-    const downloadsList = document.getElementById('downloads-list');
-    downloadsList.innerHTML = '';
+  // Modify the renderDownloads function to include Infuse playback
+  function renderDownloads(downloads) {
+      const downloadsList = document.getElementById('downloads-list');
+      downloadsList.innerHTML = '';
 
-    if (downloads.length === 0) {
-        downloadsList.innerHTML = '<div class="text-center text-gray-400">No matching downloads found</div>';
-        return;
-    }
+      if (downloads.length === 0) {
+          downloadsList.innerHTML = '<div class="text-center text-gray-400">No matching downloads found</div>';
+          return;
+      }
 
-    downloads.forEach(download => {
-        const downloadItem = document.createElement('div');
-        downloadItem.className = 'glass-effect p-4 rounded-lg mb-3';
+      downloads.forEach(download => {
+          const isVideo = download.filename.match(/\.(mp4|mkv|avi|mov|m4v)$/i);
+          const downloadItem = document.createElement('div');
+          downloadItem.className = 'glass-effect p-4 rounded-lg mb-3';
         
-        downloadItem.innerHTML = `
-            <div class="flex items-center gap-4">
-                <div class="flex-1 min-w-0">
-                    <div class="font-semibold truncate mb-1">${download.filename || 'Unnamed file'}</div>
-                    <div class="text-sm text-gray-400">
-                        ${formatBytes(download.filesize)} • ${new Date(download.generated).toLocaleDateString()}
-                    </div>
-                </div>
-                <div class="flex items-center gap-2 shrink-0">
-                    ${download.streamable ? `
-                        <button class="btn-secondary w-10 h-10 rounded-lg flex items-center justify-center">
-                            <i class="fas fa-play"></i>
-                        </button>
-                    ` : ''}
-                    <a href="${download.download}" 
+          downloadItem.innerHTML = `
+              <div class="flex items-center gap-4">
+                  <div class="flex-1 min-w-0">
+                      <div class="font-semibold truncate mb-1">${download.filename || 'Unnamed file'}</div>
+                      <div class="text-sm text-gray-400">
+                          ${formatBytes(download.filesize)} • ${new Date(download.generated).toLocaleDateString()}
+                      </div>
+                  </div>
+                  <div class="flex items-center gap-2 shrink-0">
+                      ${isVideo ? `
+                          <a href="${getInfuseDeepLink(download.download)}" 
+                           class="btn-secondary w-10 h-10 rounded-lg flex items-center justify-center"
+                           title="Play in Infuse">
+                              <i class="fas fa-play"></i>
+                          </a>
+                      ` : ''}
+                      <a href="${download.download}" 
                        class="btn-primary w-10 h-10 rounded-lg flex items-center justify-center" 
                        target="_blank">
-                        <i class="fas fa-download"></i>
-                    </a>
-                </div>
-            </div>
-        `;
-        downloadsList.appendChild(downloadItem);
-    });
-}
-
+                          <i class="fas fa-download"></i>
+                      </a>
+                  </div>
+              </div>
+          `;
+          downloadsList.appendChild(downloadItem);
+      });
+  }
 function setupSearch() {
     const searchInput = document.getElementById('search-input');
     let debounceTimeout;

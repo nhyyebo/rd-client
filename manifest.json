@@ -1,6 +1,6 @@
 {
-  "name": "RD Client",
-  "short_name": "RD Client",
+  "name": "Debridator",
+  "short_name": "Debridator",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#111827",
